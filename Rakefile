@@ -8,7 +8,7 @@ begin
   File.open("Manifest.txt", "w") {|f| MANIFEST.each {|n| f << "#{n}\n"} }
   require 'hoe'
   require File.dirname(__FILE__) + '/lib/ci/reporter/version'
-  hoe = Hoe.spec("ci_reporter") do |p|
+  hoe = Hoe.spec("amfranz-ci_reporter") do |p|
     p.version = CI::Reporter::VERSION
     p.rubyforge_name = "caldersphere"
     p.url = "http://caldersphere.rubyforge.org/ci_reporter"
@@ -23,7 +23,7 @@ begin
   end
   hoe.spec.files = MANIFEST
   hoe.spec.dependencies.delete_if { |dep| dep.name == "hoe" }
-  hoe.spec.rdoc_options += ["-SHN", "-f", "darkfish"]
+  hoe.spec.rdoc_options += ["-SHN"]
 
   task :gemspec do
     File.open("#{hoe.name}.gemspec", "w") {|f| f << hoe.spec.to_ruby }
